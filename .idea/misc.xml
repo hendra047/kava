@@ -3,7 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/drawable/ic_baseline_bookmark_24.xml" value="0.10740740740740741" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.2074074074074074" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.2074074074074074" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.2074074074074074" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/book_list_item.xml" value="0.33" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/fragment_book_detail.xml" value="0.33" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/fragment_book_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/fragment_bookmark.xml" value="0.22" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/fragment_cart.xml" value="0.22" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/fragment_explore.xml" value="0.20416666666666666" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/fragment_favorite.xml" value="0.19010416666666666" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/fragment_history.xml" value="0.20416666666666666" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/fragment_home.xml" value="0.17272727272727273" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/fragment_my_books.xml" value="0.20416666666666666" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/fragment_notification.xml" value="0.20416666666666666" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/menu/menu_bottom.xml" value="0.20416666666666666" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/menu/menu_side.xml" value="0.20416666666666666" />
+        <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/menu/menu_top.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
