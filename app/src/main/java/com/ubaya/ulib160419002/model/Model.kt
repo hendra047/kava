@@ -28,3 +28,11 @@ data class Book(
     var coverUrl: String?,
     var bookmarked: Int
 )
+
+data class Notification(
+    @SerializedName("id")
+    var bookID: Int?,
+    var title: String?,
+    @SerializedName("remaining_days")
+    var remainDays:  Int?
+)

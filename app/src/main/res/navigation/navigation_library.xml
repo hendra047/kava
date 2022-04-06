@@ -70,6 +70,6 @@
     <fragment
         android:id="@+id/itemNotification"
         android:name="com.ubaya.ulib160419002.view.NotificationFragment"
-        android:label="fragment_notification"
+        android:label="Notification"
         tools:layout="@layout/fragment_notification" />
 </navigation>
