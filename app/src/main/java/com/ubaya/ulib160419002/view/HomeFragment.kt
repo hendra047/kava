@@ -29,6 +29,7 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: ListBookViewModel
     private lateinit var viewModelNotification: NotificationViewModel
     private val bookListAdapter = BookListAdapter(arrayListOf(), "Home")
+    private var counter =  1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,12 +47,11 @@ class HomeFragment : Fragment() {
                         notification.remainDays?.let { remainDay ->
                             val value = if (remainDay > 1) "$remainDay days" else "$remainDay day"
                             notification.title?.let { title ->
-                                notification.bookID?.let { id ->
-                                    MainActivity.showNotification(
-                                        id,
-                                        "Renew your subscription book \"$title\"",
-                                        "Remaining days: $value", R.drawable.ic_baseline_library_books_24)
-                                }
+                                MainActivity.showNotification(
+                                    counter,
+                                    "Renew your subscription book \"$title\"",
+                                    "Remaining days: $value", R.drawable.ic_baseline_library_books_24)
+                                counter++
                             }
                         }
 
