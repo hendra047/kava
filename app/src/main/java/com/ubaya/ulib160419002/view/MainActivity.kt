@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Notification
-        createNotificationChannel(this, NotificationManagerCompat.IMPORTANCE_DEFAULT, false, getString(R.string.app_name), "App notification channel")
+        createNotificationChannel(this, NotificationManagerCompat.IMPORTANCE_DEFAULT, false, getString(R.string.app_name), "Reminder of Expiration on book subscription that has been purchased. The reminder will be created when 7 days before its expiration subscription")
 
         // NavController
         navController = (supportFragmentManager.findFragmentById(R.id.hostFragment) as NavHostFragment).navController
