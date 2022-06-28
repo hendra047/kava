@@ -36,7 +36,7 @@ class NotificationViewModel(application: Application) : AndroidViewModel(applica
 
                 notificationLiveData.value = result
                 loadingLiveData.value = false
-                Log.d("notification", result.toString())
+//                Log.d("notification", result.toString())
             },
             {
                 loadingLiveData.value = false
