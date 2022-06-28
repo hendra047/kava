@@ -70,6 +70,57 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:hint="Cover URL"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/textInputLayout10"
+                        app:layout_constraintStart_toStartOf="@+id/textInputLayout10"
+                        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/inputEditURL"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout7"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Book Number"
+                        app:layout_constraintEnd_toEndOf="@+id/textInputLayout8"
+                        app:layout_constraintStart_toStartOf="@+id/textInputLayout8"
+                        app:layout_constraintTop_toBottomOf="@+id/textInputLayout8">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/inputEditBookNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout10"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="Pages"
+                        app:layout_constraintEnd_toEndOf="@+id/textInputLayout7"
+                        app:layout_constraintStart_toStartOf="@+id/textInputLayout7"
+                        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/inputEditPages"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
@@ -83,7 +134,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editTitle"
+                            android:id="@+id/inputEditTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -100,7 +151,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editSubtitle"
+                            android:id="@+id/inputEditSubtitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -111,13 +162,13 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:hint="Pages"
+                        android:hint="Description"
                         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
                         app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
                         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editPages"
+                            android:id="@+id/inputEditDescription"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -134,7 +185,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editAuthor"
+                            android:id="@+id/inputEditAuthor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -151,25 +202,24 @@
                         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editPublisher"
+                            android:id="@+id/inputEditPublisher"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout8"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="24dp"
                         android:hint="Language"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/textInputLayout5"
                         app:layout_constraintStart_toStartOf="@+id/textInputLayout5"
                         app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/ediLanguage"
+                            android:id="@+id/inputEditLanguage"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>
