@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio/kava/app/src/main/res/layout/fragment_book_detail.xml" value="0.5" />
+        <entry key="..\:/Android Studio/kava/app/src/main/res/layout/fragment_edit_book.xml" value="0.25" />
+        <entry key="..\:/Android Studio/kava/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/drawable/ic_baseline_bookmark_24.xml" value="0.10740740740740741" />
         <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.2074074074074074" />
         <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Ulib160419002/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.2074074074074074" />
@@ -42,7 +45,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
