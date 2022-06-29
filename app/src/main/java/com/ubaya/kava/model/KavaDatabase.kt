@@ -1,11 +1,14 @@
 package com.ubaya.kava.model
 
 import android.content.Context
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
+import com.ubaya.kava.util.DB_NAME
 
+@Database(entities = [User::class, Book::class, Order::class], version = 1, exportSchema = false)
 abstract class KavaDatabase:RoomDatabase() {
+    abstract fun userDao(): UserDao
     abstract fun bookDao(): BookDao
+    abstract fun orderDao(): OrderDao
 
     companion object {
         @Volatile
@@ -15,7 +18,7 @@ abstract class KavaDatabase:RoomDatabase() {
         private fun buildDatabase(context: Context) =  Room.databaseBuilder(
             context.applicationContext,
             KavaDatabase::class.java,
-            "newtododb").build()
+            DB_NAME).build()
 
         operator fun invoke(context: Context) {
             if(instance!=null) {
