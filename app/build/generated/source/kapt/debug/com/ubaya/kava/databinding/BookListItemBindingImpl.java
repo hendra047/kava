@@ -14,8 +14,7 @@ public class BookListItemBindingImpl extends BookListItemBinding  {
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.cardView2, 4);
-        sViewsWithIds.put(R.id.imageCoverBook, 5);
+        sViewsWithIds.put(R.id.cardView2, 5);
         sViewsWithIds.put(R.id.progressLoadImageCover, 6);
         sViewsWithIds.put(R.id.imageView, 7);
     }
@@ -32,14 +31,15 @@ public class BookListItemBindingImpl extends BookListItemBinding  {
     }
     private BookListItemBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
-            , (androidx.cardview.widget.CardView) bindings[4]
-            , (android.widget.ImageView) bindings[5]
+            , (androidx.cardview.widget.CardView) bindings[5]
+            , (android.widget.ImageView) bindings[1]
             , (android.widget.ImageView) bindings[7]
             , (android.widget.ProgressBar) bindings[6]
-            , (android.widget.TextView) bindings[2]
             , (android.widget.TextView) bindings[3]
-            , (android.widget.TextView) bindings[1]
+            , (android.widget.TextView) bindings[4]
+            , (android.widget.TextView) bindings[2]
             );
+        this.imageCoverBook.setTag(null);
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);
         this.textShowAuthor.setTag(null);
@@ -104,6 +104,7 @@ public class BookListItemBindingImpl extends BookListItemBinding  {
             mDirtyFlags = 0;
         }
         double androidxDatabindingViewDataBindingSafeUnboxBookRating = 0.0;
+        java.lang.String bookCoverUrl = null;
         java.lang.Double bookRating = null;
         java.lang.String bookTitle = null;
         com.ubaya.kava.model.Book book = mBook;
@@ -115,6 +116,8 @@ public class BookListItemBindingImpl extends BookListItemBinding  {
 
 
                 if (book != null) {
+                    // read book.coverUrl
+                    bookCoverUrl = book.getCoverUrl();
                     // read book.rating
                     bookRating = book.getRating();
                     // read book.title
@@ -135,6 +138,7 @@ public class BookListItemBindingImpl extends BookListItemBinding  {
         if ((dirtyFlags & 0x3L) != 0) {
             // api target 1
 
+            com.ubaya.kava.util.UtilKt.loadPhotoURL(this.imageCoverBook, 300, 400, bookCoverUrl, progressLoadImageCover);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textShowAuthor, bookAuthor);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textShowRating, doubleToStringBookRating);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textShowTitleBook, bookTitle);

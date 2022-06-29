@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
             when (target.id) {
                 R.id.itemHome  -> bottomNav.visibility = View.VISIBLE
                 R.id.itemMyBooks -> bottomNav.visibility = View.VISIBLE
+                R.id.itemProfile -> bottomNav.visibility = View.VISIBLE
                 else -> bottomNav.visibility = View.GONE
             }
         }
