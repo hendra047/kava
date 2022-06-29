@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/bookDetailFragment"
-        android:name="com.ubaya.ulib160419002.view.BookDetailFragment"
+        android:name="com.ubaya.kava.view.BookDetailFragment"
         android:label="Detail Book"
         tools:layout="@layout/fragment_book_detail">
         <argument
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemHome"
-        android:name="com.ubaya.ulib160419002.view.HomeFragment"
+        android:name="com.ubaya.kava.view.HomeFragment"
         android:label="ULIB"
         tools:layout="@layout/fragment_home" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemMyBooks"
-        android:name="com.ubaya.ulib160419002.view.MyBooksFragment"
+        android:name="com.ubaya.kava.view.MyBooksFragment"
         android:label="My Books"
         tools:layout="@layout/fragment_my_books" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemCart"
-        android:name="com.ubaya.ulib160419002.view.CartFragment"
+        android:name="com.ubaya.kava.view.CartFragment"
         android:label="Cart"
         tools:layout="@layout/fragment_cart" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemBookmark"
-        android:name="com.ubaya.ulib160419002.view.BookmarkFragment"
+        android:name="com.ubaya.kava.view.BookmarkFragment"
         android:label="Bookmark"
         tools:layout="@layout/fragment_bookmark" >
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemHistory"
-        android:name="com.ubaya.ulib160419002.view.HistoryFragment"
+        android:name="com.ubaya.kava.view.HistoryFragment"
         android:label="History"
         tools:layout="@layout/fragment_history" >
         <action
@@ -64,12 +64,12 @@
     </fragment>
     <fragment
         android:id="@+id/itemProfile"
-        android:name="com.ubaya.ulib160419002.view.ProfileFragment"
+        android:name="com.ubaya.kava.view.ProfileFragment"
         android:label="My Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/itemNotification"
-        android:name="com.ubaya.ulib160419002.view.NotificationFragment"
+        android:name="com.ubaya.kava.view.NotificationFragment"
         android:label="Notification"
         tools:layout="@layout/fragment_notification" />
 </navigation>

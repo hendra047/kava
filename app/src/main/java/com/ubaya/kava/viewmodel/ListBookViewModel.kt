@@ -1,0 +1,46 @@
+package com.ubaya.kava.viewmodel
+
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.room.*
+import com.ubaya.kava.model.Book
+import com.ubaya.kava.model.KavaDatabase
+import com.ubaya.kava.util.DB_NAME
+import com.ubaya.kava.util.buildDb
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
+
+class ListBookViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
+    val booksLD = MutableLiveData<List<Book>>()
+    val booksLoadErrorLD = MutableLiveData<Boolean>()
+    val loadingLD = MutableLiveData<Boolean>()
+    private var job = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
+
+    fun refresh() {
+        booksLoadErrorLD.value = false
+        loadingLD.value = true
+
+        launch {
+            val db = buildDb(getApplication())
+
+            var listBook = listOf(Book("Elektra: A Novel of the House of Atreus", null, "9781250773616", 320, "English", "Jennifer Saint", "Flatiron Books", "The House of Atreus is cursed. A bloodline tainted by a generational cycle of violence and vengeance. This is the story of three women, their fates inextricably tied to this curse, and the fickle nature of men and gods.\r\n\r\nClytemnestra\r\nThe sister of Helen, wife of Agamemnon - her hopes of averting the curse are dashed when her sister is taken to Troy by the feckless Paris. Her husband raises a great army against them, and determines to win, whatever the cost.\r\n\r\nCassandra\r\nPrincess of Troy, and cursed by Apollo to see the future but never to be believed when she speaks of it. She is powerless in her knowledge that the city will fall.\r\n\r\nElektra\r\nThe youngest daughter of Clytemnestra and Agamemnon, Elektra is horrified by the bloodletting of her kin. But, can she escape the curse, or is her own destiny also bound by violence?\r\n\r\nPraise for Jennifer Saint and ARIADNE:\r\n\r\n\' A lyrical, insightful re-telling\' Daily Mail\r\n\r\n\'Relevant and revelatory\' Stylist\r\n\r\n\'Energetic and compelling\' Times\r\n\r\n\'An illuminating read\' Woman & Home\r\n\r\n\'A story that\'s impossible to forget\' Culturefly", 4.1, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1639951176l/58725016.jpg"), Book("Dating Dr. Dil", "If Shakespeare was an Auntie #1", "9780063001107", 352, "English", "Nisha Sharma", "Avon", "Kareena Mann dreams of having a love story like her parents, but she prefers restoring her classic car to swiping right on dating apps. When her father announces he’s selling her mother’s home, Kareena makes a deal with him: he’ll gift her the house if she can get engaged in four months. Her search for her soulmate becomes impossible when her argument with Dr. Prem Verma, host of The Dr. Dil Show, goes viral. Now the only man in her life is the one she doesn’t want.\r\n\r\nDr. Prem Verma is dedicated to building a local community health center, but he needs to get donors with deep pockets. The Dr. Dil Show was doing just that, until his argument with Kareena went viral, and he’s left short changed. That’s when Kareena’s meddling aunties presented him with a solution: convince Kareena he’s her soulmate and they’ll fund his clinic.  \r\n\r\nEven though they have conflicting views on love-matches and arranged-matches, the more time Prem spends with Kareena, the more he begins to believe she’s the woman he wants to spend the rest of his life with. But for Prem and Kareena to find their happily ever after, they must admit that hate has turned into fate.", 3.9, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1642405300l/57007401.jpg"), Book("Hook, Line, and Sinker", "It Happened One Summer #2", "9780063045699", 400, "English", "Tessa Bailey", "Avon Books", "King crab fisherman Fox Thornton has a reputation as a sexy, carefree flirt. Everyone knows he\'s a guaranteed good time--in bed and out--and that\'s exactly how he prefers it. Until he meets Hannah Bellinger. She\'s immune to his charm and looks, but she seems to enjoy his... personality? And wants to be friends? Bizarre. But he likes her too much to risk a fling, so platonic pals it is.\r\n\r\nNow, Hannah\'s in town for work, crashing in Fox\'s spare bedroom. She knows he\'s a notorious ladies\' man, but they\'re definitely just friends. In fact, she\'s nursing a hopeless crush on a colleague and Fox is just the person to help with her lackluster love life. Armed with a few tips from Westport\'s resident Casanova, Hannah sets out to catch her coworker\'s eye... yet the more time she spends with Fox, the more she wants him instead. As the line between friendship and flirtation begins to blur, Hannah can\'t deny she loves everything about Fox, but she refuses to be another notch on his bedpost.\r\n\r\nLiving with his best friend should have been easy. Except now she\'s walking around in a towel, sleeping right across the hall, and Fox is fantasizing about waking up next to her for the rest of his life and... and... man overboard! He\'s fallen for her, hook, line, and sinker. Helping her flirt with another guy is pure torture, but maybe if Fox can tackle his inner demons and show Hannah he\'s all in, she\'ll choose him instead?\r\n\r\nIn the follow-up to It Happened One Summer, Tessa Bailey delivers another deliciously fun rom-com about a former player who accidentally falls for his best friend while trying to help her land a different man...", 4.2, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1627068858l/58283080.jpg"), Book("Perahu Kertas", null, "9789791227780", 456, "Indonesia", "Dee Lestari", "Bentang Pustaka & Truedee", "Namanya Kugy. Mungil, pengkhayal, dan berantakan. Dari benaknya, mengalir untaian dongeng indah. Keenan belum pernah bertemu manusia seaneh itu.\r\n\r\n...\r\n\r\nNamanya Keenan. Cerdas, artistik, dan penuh kejutan. Dari tangannya, mewujud lukisan-lukisan magis. Kugy belum pernah bertemu manusia seajaib itu.\r\n\r\n...\r\n\r\nDan kini mereka berhadapan di antara hamparan misteri dan rintangan. Akankah dongeng dan lukisan itu bersatu?\r\n\r\nAkankah hati dan impian mereka bertemu?", 3.9, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1356225544l/6765740.jpg"), Book("Laskar Pelangi", "Tetralogi Laskar Pelangi #1", "9789793062792", 534, "Indonesia", "Andrea Hirata", "Bentang Pustaka", "Begitu banyak hal menakjubkan yang terjadi dalam masa kecil para anggota Laskar Pelangi. Sebelas orang anak Melayu Belitong yang luar biasa ini tak menyerah walau keadaan tak bersimpati pada mereka. Tengoklah Lintang, seorang kuli kopra cilik yang genius dan dengan senang hati bersepeda 80 kilometer pulang pergi untuk memuaskan dahaganya akan ilmu—bahkan terkadang hanya untuk menyanyikan Padamu Negeri di akhir jam sekolah. Atau Mahar, seorang pesuruh tukang parut kelapa sekaligus seniman dadakan yang imajinatif, tak logis, kreatif, dan sering diremehkan sahabat-sahabatnya, namun berhasil mengangkat derajat sekolah kampung mereka dalam karnaval 17 Agustus. Dan juga sembilan orang Laskar Pelangi lain yang begitu bersemangat dalam menjalani hidup dan berjuang meraih cita-cita. Selami ironisnya kehidupan mereka, kejujuran pemikiran mereka, indahnya petualangan mereka, dan temukan diri Anda tertawa, menangis, dan tersentuh saat membaca setiap lembarnya. Buku ini dipersembahkan buat mereka yang meyakini the magic of childhood memories, dan khususnya juga buat siapa saja yang masih meyakini adanya pintu keajaiban lain untuk mengubah dunia: pendidikan.", 4.2, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1489732961l/1362193._SY475_.jpg"), Book("Hujan", null, "9786020324784", 320, "Indonesia", "Tere Liye", "Gramedia Pustaka Utama", "Tentang persahabatan\r\nTentang cinta\r\nTentang perpisahan\r\nTentang melupakan\r\nTentang hujan", 4.4, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1451905281l/28446637._SY475_.jpg"), Book("Dilan: Dia Adalah Dilanku Tahun 1990", "Dilan #1", "9786027870413", 332, "Indonesia", "Pidi Baiq", "Pastel Books (Mizan Group)", "\"Milea, kamu cantik, tapi aku belum mencintaimu. Enggak tahu kalau sore. Tunggu aja\" (Dilan 1990)\r\n\r\n\"Milea, jangan pernah bilang ke aku ada yang menyakitimu, nanti, besoknya, orang itu akan hilang.\" (Dilan 1990)\r\n\r\n\"Cinta sejati adalah kenyamanan, kepercayaan, dan dukungan. Kalau kamu tidak setuju, aku tidak peduli.\" (Milea 1990)", 4.1, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1442310576l/22037542._SX318_.jpg"))
+//            db.bookDao().insertAll(*listBook.toTypedArray())
+            booksLD.value = db.bookDao().selectAllBook()
+        }
+    }
+
+    fun removeBook(todo: Book) {
+        launch {
+            val db = Room.databaseBuilder(
+                getApplication(),
+                KavaDatabase::class.java, DB_NAME).build()
+
+            db.bookDao().delete(todo)
+            booksLD.value = db.bookDao().selectAllBook()
+        }
+    }
+}
