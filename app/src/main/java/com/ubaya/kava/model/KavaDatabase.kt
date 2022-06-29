@@ -17,6 +17,7 @@ abstract class KavaDatabase:RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun bookDao(): BookDao
     abstract fun orderDao(): OrderDao
+    abstract fun bookmarkDao(): BookmarkDao
 
     companion object {
         @Volatile

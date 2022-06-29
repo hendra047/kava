@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.kava.R
+import com.ubaya.kava.model.GlobalData
 import com.ubaya.kava.viewmodel.BookmarkViewModel
 import kotlinx.android.synthetic.main.fragment_bookmark.*
 
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_bookmark.*
  */
 class BookmarkFragment : Fragment() {
     private lateinit var viewModel: BookmarkViewModel
-    private val bookListAdapter = BookListAdapter(arrayListOf(), "Bookmark")
+    private val bookmarkListAdapter = BookmarkListAdapter(arrayListOf(), "Bookmark")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,10 +31,11 @@ class BookmarkFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(BookmarkViewModel::class.java)
-        viewModel.refresh()
+        val username= GlobalData.username
+        viewModel.refresh(username)
 
         recViewBookmark.layoutManager = LinearLayoutManager(context)
-        recViewBookmark.adapter = bookListAdapter
+        recViewBookmark.adapter = bookmarkListAdapter
 
         observeViewModel()
 
@@ -41,14 +43,14 @@ class BookmarkFragment : Fragment() {
             recViewBookmark.visibility = View.GONE
             textErrorBookmark.visibility = View.GONE
             progressLoadBookmark.visibility = View.VISIBLE
-            viewModel.refresh()
+            viewModel.refresh(username)
             refreshLayoutBookmark.isRefreshing = false
         }
     }
 
     private fun observeViewModel() {
         viewModel.booksLiveData.observe(viewLifecycleOwner) {
-            bookListAdapter.updateBookList(it)
+            bookmarkListAdapter.updateBookList(it)
         }
         viewModel.booksLoadErrorLiveData.observe(viewLifecycleOwner) {
             textErrorBookmark.visibility = if (it) View.INVISIBLE else View.GONE

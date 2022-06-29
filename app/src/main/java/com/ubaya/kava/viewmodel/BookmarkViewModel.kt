@@ -11,46 +11,33 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ubaya.kava.model.Book
+import com.ubaya.kava.model.Bookmark
 import com.ubaya.kava.model.GlobalData
+import com.ubaya.kava.util.buildDb
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class BookmarkViewModel(application: Application) : AndroidViewModel(application) {
-    val booksLiveData = MutableLiveData<ArrayList<Book>>()
+class BookmarkViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
+    val booksLiveData = MutableLiveData<List<Bookmark>>()
     val booksLoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
-    val TAG = "bookmarkTag"
-    private var queue: RequestQueue? = null
+    private var job = Job()
 
-    fun refresh() {
-        booksLoadErrorLiveData.value = false
+    //Coroutine
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
+
+    fun refresh(username:String) {
         loadingLiveData.value = true
-
-        queue = Volley.newRequestQueue(getApplication())
-
-        val url = "https://ubaya.fun/native/160419002/ulib/bookmarks.php?user_id=${GlobalData.userID}"
-        val stringRequest = StringRequest(
-            Request.Method.GET,
-            url,
-            {
-                val sType = object : TypeToken<ArrayList<Book>>() {}.type
-                val result = Gson().fromJson<ArrayList<Book>>(it, sType)
-
-                booksLiveData.value = result
-                loadingLiveData.value = false
-                Log.d("bookmark", result.toString())
-            },
-            {
-                loadingLiveData.value = false
-                booksLoadErrorLiveData.value = true
-                Log.d("error_bookmark", it.message.toString())
-            }
-        ).apply {
-            tag = TAG
+        booksLoadErrorLiveData.value = false
+        launch {
+            val db = buildDb(getApplication())
+            booksLiveData.value = db.bookmarkDao().selectBookmark(username)
         }
-        queue?.add(stringRequest)
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        queue?.cancelAll(TAG)
-    }
+
 }

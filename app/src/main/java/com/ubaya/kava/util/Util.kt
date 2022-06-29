@@ -49,7 +49,7 @@ val initDatabase: RoomDatabase.Callback = object : RoomDatabase.Callback() {
             db.execSQL("""INSERT INTO `order` (`reserved_date`, `end_date`, `is_paid`, `user_id`, `book_id`) VALUES('2022-03-29 20:50:11', '2022-04-08 20:50:11', 0, 1, 3),('2022-03-16 11:00:11', '2022-03-23 11:00:11', 1, 1, 4),('2022-03-14 20:51:20', '2022-03-21 20:51:20', 1, 1, 7),('2022-03-25 08:00:00', '2022-04-07 08:00:00', 1, 1, 7),('2022-03-17 20:52:39', '2022-04-12 13:25:20', 1, 2, 5),('2022-03-23 18:30:39', '2022-04-10 18:30:39', 1, 2, 1),('2022-03-28 15:45:38', '2022-04-04 15:45:38', 0, 2, 1),('2022-03-30 20:53:38', '2022-04-06 20:53:38', 0, 3, 2),('2022-03-30 20:55:08', '2022-04-16 20:55:08', 0, 3, 1),('2022-03-31 07:20:08', '2022-04-07 07:20:08', 0, 3, 6)""")
 
             // FILL `Bookmark` TABLE
-            db.execSQL("""INSERT INTO `bookmark` (`user_id`, `book_id`) VALUES(1, 14),(2, 5),(3, 10),(3, 15)""")
+            db.execSQL("""INSERT INTO `bookmark` (`username`, `book_id`, `book_title`, `book_subtitle`, `book_rating`, `book_url`) VALUES("daniel123", 1, "Elektra: A Novel of the House of Atreus", NULL, 4.1, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1639951176l/58725016.jpg"),("daniel123", 2, "Dating Dr. Dil", "If Shakespeare was an Auntie #1", 3.9, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1642405300l/57007401.jpg"),("daniel123", 3, "Hook, Line, and Sinker", "It Happened One Summer #2", 4.2, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1627068858l/58283080.jpg"),("sharline123", 4, "Dilan: Dia Adalah Dilanku Tahun 1990", "Dilan #1", 4.1, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1442310576l/22037542._SX318_.jpg")""")
         }
     }
 }
