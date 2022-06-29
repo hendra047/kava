@@ -50,10 +50,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d("trans-1", "-1")
-        KavaDatabase.getInstance(this)
-        Log.d("trans-1", "0")
-
         // Notification
         createNotificationChannel(this, NotificationManagerCompat.IMPORTANCE_DEFAULT, false, getString(R.string.app_name), "Reminder of Expiration on book subscription that has been purchased. The reminder will be created when 7 days before its expiration subscription")
 

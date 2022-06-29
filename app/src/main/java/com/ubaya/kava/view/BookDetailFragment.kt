@@ -40,7 +40,7 @@ class BookDetailFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.bookLiveData.observe(viewLifecycleOwner) {
             it?.let {
-                imageBookmark.setImageResource(if (it.bookmarked == 1) R.drawable.ic_baseline_bookmark_24 else R.drawable.ic_outline_bookmark_border_24)
+//                imageBookmark.setImageResource(if (it.bookmarked == 1) R.drawable.ic_baseline_bookmark_24 else R.drawable.ic_outline_bookmark_border_24)
                 imageCover.loadImage(300, 400, it.coverUrl)
                 imageCoverBG.loadImage(400, 400, it.coverUrl)
                 textTitle.text = it.title

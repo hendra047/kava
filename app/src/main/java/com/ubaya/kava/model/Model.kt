@@ -44,8 +44,8 @@ data class Book(
     var rating: Double?,
     @ColumnInfo(name="cover_url")
     var coverUrl: String?,
-    @ColumnInfo(name="bookmarked")
-    var bookmarked: Int
+    @ColumnInfo(name="bookmarked", defaultValue = "0")
+    var bookmarked: Int = 0
 ){
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
@@ -59,6 +59,17 @@ data class Order(
     var end_date: String?,
     @ColumnInfo(name="is_paid")
     var is_paid: Int,
+    @ColumnInfo(name="user_id")
+    var user_id: Int,
+    @ColumnInfo(name="book_id")
+    var book_id: Int
+){
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}
+
+@Entity
+data class Bookmark(
     @ColumnInfo(name="user_id")
     var user_id: Int,
     @ColumnInfo(name="book_id")
