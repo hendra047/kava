@@ -43,19 +43,22 @@ class HomeFragment : Fragment() {
                 viewModelNotification.refresh()
 
                 viewModelNotification.notificationLiveData.observe(viewLifecycleOwner) {
-                    for (notification in it) {
-                        notification.remainDays?.let { remainDay ->
-                            val value = if (remainDay > 1) "$remainDay days" else "$remainDay day"
-                            notification.title?.let { title ->
-                                MainActivity.showNotification(
-                                    counter,
-                                    "Renew your subscription book \"$title\"",
-                                    "Remaining days: $value", R.drawable.ic_baseline_library_books_24)
-                                counter++
+                    if(it !=null){
+                        for (notification in it) {
+                            notification.remainDays?.let { remainDay ->
+                                val value = if (remainDay > 1) "$remainDay days" else "$remainDay day"
+                                notification.title?.let { title ->
+                                    MainActivity.showNotification(
+                                        counter,
+                                        "Renew your subscription book \"$title\"",
+                                        "Remaining days: $value", R.drawable.ic_baseline_library_books_24)
+                                    counter++
+                                }
                             }
-                        }
 
+                        }
                     }
+
                 }
             }
     }
