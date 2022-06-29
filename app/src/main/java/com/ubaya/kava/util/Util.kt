@@ -46,10 +46,10 @@ fun ImageView.loadImage(width: Int, height: Int, url: String?, progressBar:Progr
         })
 }
 
-@BindingAdapter("android:imageUrl", "android:progressBar")
-fun loadPhotoURL(view: ImageView, url:String?, pb:ProgressBar){
+@BindingAdapter("android:widthImageUrl","android:heightImageUrl","android:imageUrl", "android:progressBar")
+fun loadPhotoURL(view: ImageView, width: Int, height: Int, url:String?, pb:ProgressBar){
     if(url != null){
-        view.loadImage(url,pb)
+        view.loadImage(width, height, url,pb)
     }
 }
 

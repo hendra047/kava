@@ -9,12 +9,12 @@ plugins {
 android {
     compileSdk 32
 
-    dataBinding {
-        enabled true
+    buildFeatures {
+        dataBinding true
     }
 
     defaultConfig {
-        applicationId "com.ubaya.ulib160419002"
+        applicationId "com.ubaya.kava"
         minSdk 21
         targetSdk 32
         versionCode 1
