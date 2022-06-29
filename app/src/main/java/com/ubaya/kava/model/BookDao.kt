@@ -10,6 +10,9 @@ interface BookDao {
     @Query("SELECT * FROM book")
     suspend fun selectAllBook(): List<Book>
 
+    @Query("SELECT * FROM book WHERE id= :id")
+    suspend fun selectBook(id:Int): Book
+
     @Update
     suspend fun updateBook(book: Book)
 
