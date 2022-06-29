@@ -1,9 +1,6 @@
 package com.ubaya.kava.model
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface UserDao {
@@ -12,4 +9,7 @@ interface UserDao {
 
     @Update
     suspend fun updateUser(user: User)
+
+    @Delete
+    suspend fun deleteUser(user: User)
 }

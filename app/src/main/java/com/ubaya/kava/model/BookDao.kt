@@ -12,4 +12,7 @@ interface BookDao {
 
     @Update
     suspend fun updateBook(book: Book)
+
+    @Delete
+    suspend fun deleteBook(book: Book)
 }

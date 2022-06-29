@@ -45,7 +45,7 @@ data class Book(
     @ColumnInfo(name="cover_url")
     var coverUrl: String?,
     @ColumnInfo(name="bookmarked", defaultValue = "0")
-    var bookmarked: Int = 0
+    var bookmarked: Int
 ){
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
