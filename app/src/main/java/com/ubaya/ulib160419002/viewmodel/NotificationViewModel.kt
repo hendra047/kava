@@ -34,9 +34,11 @@ class NotificationViewModel(application: Application) : AndroidViewModel(applica
                 val sType = object : TypeToken<ArrayList<Notification>>() {}.type
                 val result = Gson().fromJson<ArrayList<Notification>>(it, sType)
 
-                notificationLiveData.value = result
-                loadingLiveData.value = false
-                Log.d("notification", result.toString())
+                if (result != null) {
+                    notificationLiveData.value = result
+                    loadingLiveData.value = false
+                    Log.d("notification", result.toString())
+                }
             },
             {
                 loadingLiveData.value = false
