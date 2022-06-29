@@ -68,6 +68,17 @@ data class Order(
     var id: Int = 0
 }
 
+@Entity
+data class Bookmark(
+    @ColumnInfo(name="user_id")
+    var user_id: Int,
+    @ColumnInfo(name="book_id")
+    var book_id: Int
+){
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}
+
 data class Notification(
     @SerializedName("id")
     var bookID: Int?,

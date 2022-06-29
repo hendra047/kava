@@ -1,9 +1,6 @@
 package com.ubaya.kava.model
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface OrderDao {
@@ -12,4 +9,7 @@ interface OrderDao {
 
     @Update
     suspend fun updateOrder(order: Order)
+
+    @Delete
+    suspend fun deleteOrder(order: Order)
 }
