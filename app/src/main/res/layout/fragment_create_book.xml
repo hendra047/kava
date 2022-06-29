@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".model.CreateBookFragment">
+    tools:context=".view.CreateBookFragment">
 
     <ScrollView
         android:layout_width="0dp"
@@ -170,7 +170,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/inputCreate Publisher"
+                            android:id="@+id/inputCreatePublisher"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>

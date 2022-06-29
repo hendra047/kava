@@ -1,5 +1,6 @@
 package com.ubaya.kava.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -42,6 +43,7 @@ class BookListAdapter(val bookList: ArrayList<Book>, val currentFrag: String): R
     fun updateBookList(newBookList: List<Book>) {
         bookList.clear()
         bookList.addAll(newBookList)
+        Log.d("coba", bookList.count().toString())
         notifyDataSetChanged()
     }
 }

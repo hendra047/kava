@@ -103,7 +103,8 @@ public class BookListItemBindingImpl extends BookListItemBinding  {
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
-        double bookRating = 0.0;
+        double androidxDatabindingViewDataBindingSafeUnboxBookRating = 0.0;
+        java.lang.Double bookRating = null;
         java.lang.String bookTitle = null;
         com.ubaya.kava.model.Book book = mBook;
         java.lang.String doubleToStringBookRating = null;
@@ -123,8 +124,12 @@ public class BookListItemBindingImpl extends BookListItemBinding  {
                 }
 
 
-                // read Double.toString(book.rating)
-                doubleToStringBookRating = java.lang.Double.toString(bookRating);
+                // read androidx.databinding.ViewDataBinding.safeUnbox(book.rating)
+                androidxDatabindingViewDataBindingSafeUnboxBookRating = androidx.databinding.ViewDataBinding.safeUnbox(bookRating);
+
+
+                // read Double.toString(androidx.databinding.ViewDataBinding.safeUnbox(book.rating))
+                doubleToStringBookRating = java.lang.Double.toString(androidxDatabindingViewDataBindingSafeUnboxBookRating);
         }
         // batch finished
         if ((dirtyFlags & 0x3L) != 0) {
