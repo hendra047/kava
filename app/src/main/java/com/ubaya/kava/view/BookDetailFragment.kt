@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.ubaya.kava.R
-import com.ubaya.kava.util.loadImage
 import com.ubaya.kava.viewmodel.DetailBookViewModel
 import kotlinx.android.synthetic.main.fragment_book_detail.*
 
@@ -41,8 +40,8 @@ class BookDetailFragment : Fragment() {
         viewModel.bookLiveData.observe(viewLifecycleOwner) {
             it?.let {
 //                imageBookmark.setImageResource(if (it.bookmarked == 1) R.drawable.ic_baseline_bookmark_24 else R.drawable.ic_outline_bookmark_border_24)
-                imageCover.loadImage(300, 400, it.coverUrl)
-                imageCoverBG.loadImage(400, 400, it.coverUrl)
+//                imageCover.loadImage(300, 400, it.coverUrl)
+//                imageCoverBG.loadImage(400, 400, it.coverUrl)
                 textTitle.text = it.title
                 textSubtitle.text = it.subtitle
                 textRating.text = it.rating.toString()
