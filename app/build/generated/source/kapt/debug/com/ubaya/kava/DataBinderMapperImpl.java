@@ -7,6 +7,7 @@ import androidx.databinding.DataBinderMapper;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.ViewDataBinding;
 import com.ubaya.kava.databinding.BookListItemBindingImpl;
+import com.ubaya.kava.databinding.FragmentBookDetailBindingImpl;
 import com.ubaya.kava.databinding.FragmentCreateBookBindingImpl;
 import java.lang.IllegalArgumentException;
 import java.lang.Integer;
@@ -21,12 +22,15 @@ import java.util.List;
 public class DataBinderMapperImpl extends DataBinderMapper {
   private static final int LAYOUT_BOOKLISTITEM = 1;
 
-  private static final int LAYOUT_FRAGMENTCREATEBOOK = 2;
+  private static final int LAYOUT_FRAGMENTBOOKDETAIL = 2;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(2);
+  private static final int LAYOUT_FRAGMENTCREATEBOOK = 3;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(3);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.ubaya.kava.R.layout.book_list_item, LAYOUT_BOOKLISTITEM);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.ubaya.kava.R.layout.fragment_book_detail, LAYOUT_FRAGMENTBOOKDETAIL);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.ubaya.kava.R.layout.fragment_create_book, LAYOUT_FRAGMENTCREATEBOOK);
   }
 
@@ -44,6 +48,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new BookListItemBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for book_list_item is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTBOOKDETAIL: {
+          if ("layout/fragment_book_detail_0".equals(tag)) {
+            return new FragmentBookDetailBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_book_detail is invalid. Received: " + tag);
         }
         case  LAYOUT_FRAGMENTCREATEBOOK: {
           if ("layout/fragment_create_book_0".equals(tag)) {
@@ -106,10 +116,11 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(2);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(3);
 
     static {
       sKeys.put("layout/book_list_item_0", com.ubaya.kava.R.layout.book_list_item);
+      sKeys.put("layout/fragment_book_detail_0", com.ubaya.kava.R.layout.fragment_book_detail);
       sKeys.put("layout/fragment_create_book_0", com.ubaya.kava.R.layout.fragment_create_book);
     }
   }

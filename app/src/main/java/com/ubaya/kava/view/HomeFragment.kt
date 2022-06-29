@@ -15,6 +15,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.notifications_item.view.*
 import java.util.concurrent.TimeUnit
@@ -70,8 +71,10 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
             .apply {
-                val action = HomeFragmentDirections.actionCreateBookFragment()
-                Navigation.findNavController(this).navigate(action)
+                fabCreateBook.setOnClickListener {
+                    val action = HomeFragmentDirections.actionCreateBookFragment()
+                    Navigation.findNavController(this).navigate(action)
+                }
             }
     }
 

@@ -19,6 +19,12 @@ import com.ubaya.kava.viewmodel.DetailBookViewModel
 import java.util.concurrent.TimeUnit
 
 
+/**
+ * A simple [Fragment] subclass.
+ * Use the [CreateBookFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+
 class CreateBookFragment : Fragment(), AddBookClickListener {
     private lateinit var viewModel:DetailBookViewModel
     private lateinit var dataBinding:FragmentCreateBookBinding
