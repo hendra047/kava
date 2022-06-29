@@ -5,56 +5,48 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
 import com.ubaya.kava.R
+import com.ubaya.kava.databinding.FragmentCreateBookBinding
+import com.ubaya.kava.model.Book
+import com.ubaya.kava.viewmodel.DetailBookViewModel
+import java.util.concurrent.TimeUnit
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CreateBookFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class CreateBookFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+class CreateBookFragment : Fragment(), AddBookClickListener {
+    private lateinit var viewModel:DetailBookViewModel
+    private lateinit var dataBinding:FragmentCreateBookBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_book, container, false)
+        //return inflater.inflate(R.layout.fragment_create_book, container, false)
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_create_book,container,false)
+        return dataBinding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CreateBookFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CreateBookFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        dataBinding.book = Book("","","",0, "","","","",0.0,"",0)
+        viewModel = ViewModelProvider(this).get(DetailBookViewModel::class.java)
+        dataBinding.listener = this
     }
+
+    override fun onButtonAddBook(v: View) {
+        dataBinding.book?.let {
+            val list = listOf(it)
+            viewModel.addBook(list)
+            Toast.makeText(v.context, "Book created", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 }

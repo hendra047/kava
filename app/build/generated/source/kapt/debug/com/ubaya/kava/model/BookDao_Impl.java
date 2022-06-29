@@ -328,6 +328,110 @@ public final class BookDao_Impl implements BookDao {
     }, continuation);
   }
 
+  @Override
+  public Object selectBook(final int id, final Continuation<? super Book> continuation) {
+    final String _sql = "SELECT * FROM book WHERE id= ?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, id);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<Book>() {
+      @Override
+      public Book call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
+          final int _cursorIndexOfSubtitle = CursorUtil.getColumnIndexOrThrow(_cursor, "subtitle");
+          final int _cursorIndexOfBookNumber = CursorUtil.getColumnIndexOrThrow(_cursor, "book_no");
+          final int _cursorIndexOfPages = CursorUtil.getColumnIndexOrThrow(_cursor, "pages");
+          final int _cursorIndexOfLanguage = CursorUtil.getColumnIndexOrThrow(_cursor, "language");
+          final int _cursorIndexOfAuthor = CursorUtil.getColumnIndexOrThrow(_cursor, "author");
+          final int _cursorIndexOfPublisher = CursorUtil.getColumnIndexOrThrow(_cursor, "publisher");
+          final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
+          final int _cursorIndexOfRating = CursorUtil.getColumnIndexOrThrow(_cursor, "rating");
+          final int _cursorIndexOfCoverUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "cover_url");
+          final int _cursorIndexOfBookmarked = CursorUtil.getColumnIndexOrThrow(_cursor, "bookmarked");
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final Book _result;
+          if(_cursor.moveToFirst()) {
+            final String _tmpTitle;
+            if (_cursor.isNull(_cursorIndexOfTitle)) {
+              _tmpTitle = null;
+            } else {
+              _tmpTitle = _cursor.getString(_cursorIndexOfTitle);
+            }
+            final String _tmpSubtitle;
+            if (_cursor.isNull(_cursorIndexOfSubtitle)) {
+              _tmpSubtitle = null;
+            } else {
+              _tmpSubtitle = _cursor.getString(_cursorIndexOfSubtitle);
+            }
+            final String _tmpBookNumber;
+            if (_cursor.isNull(_cursorIndexOfBookNumber)) {
+              _tmpBookNumber = null;
+            } else {
+              _tmpBookNumber = _cursor.getString(_cursorIndexOfBookNumber);
+            }
+            final Integer _tmpPages;
+            if (_cursor.isNull(_cursorIndexOfPages)) {
+              _tmpPages = null;
+            } else {
+              _tmpPages = _cursor.getInt(_cursorIndexOfPages);
+            }
+            final String _tmpLanguage;
+            if (_cursor.isNull(_cursorIndexOfLanguage)) {
+              _tmpLanguage = null;
+            } else {
+              _tmpLanguage = _cursor.getString(_cursorIndexOfLanguage);
+            }
+            final String _tmpAuthor;
+            if (_cursor.isNull(_cursorIndexOfAuthor)) {
+              _tmpAuthor = null;
+            } else {
+              _tmpAuthor = _cursor.getString(_cursorIndexOfAuthor);
+            }
+            final String _tmpPublisher;
+            if (_cursor.isNull(_cursorIndexOfPublisher)) {
+              _tmpPublisher = null;
+            } else {
+              _tmpPublisher = _cursor.getString(_cursorIndexOfPublisher);
+            }
+            final String _tmpDescription;
+            if (_cursor.isNull(_cursorIndexOfDescription)) {
+              _tmpDescription = null;
+            } else {
+              _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
+            }
+            final Double _tmpRating;
+            if (_cursor.isNull(_cursorIndexOfRating)) {
+              _tmpRating = null;
+            } else {
+              _tmpRating = _cursor.getDouble(_cursorIndexOfRating);
+            }
+            final String _tmpCoverUrl;
+            if (_cursor.isNull(_cursorIndexOfCoverUrl)) {
+              _tmpCoverUrl = null;
+            } else {
+              _tmpCoverUrl = _cursor.getString(_cursorIndexOfCoverUrl);
+            }
+            final int _tmpBookmarked;
+            _tmpBookmarked = _cursor.getInt(_cursorIndexOfBookmarked);
+            _result = new Book(_tmpTitle,_tmpSubtitle,_tmpBookNumber,_tmpPages,_tmpLanguage,_tmpAuthor,_tmpPublisher,_tmpDescription,_tmpRating,_tmpCoverUrl,_tmpBookmarked);
+            final int _tmpId;
+            _tmpId = _cursor.getInt(_cursorIndexOfId);
+            _result.setId(_tmpId);
+          } else {
+            _result = null;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, continuation);
+  }
+
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();
   }
