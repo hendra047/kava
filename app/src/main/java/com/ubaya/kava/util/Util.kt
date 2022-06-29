@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso
 import com.ubaya.kava.R
 import com.ubaya.kava.model.KavaDatabase
 import java.lang.Exception
+import androidx.databinding.BindingAdapter
 
 const val DB_NAME = "bookdb"
 
@@ -29,32 +30,27 @@ fun buildDb(context: Context) = Room.databaseBuilder(context, KavaDatabase::clas
     .addMigrations(MIGRATION_1_2)
     .build()
 
-fun ImageView.loadImage(width: Int, height: Int, url: String?, progressBar: ProgressBar) {
+fun ImageView.loadImage(width: Int, height: Int, url: String?, progressBar:ProgressBar){
     Picasso.get()
         .load(url)
         .resize(width,height)
         .centerCrop()
         .error(R.drawable.ic_baseline_error_24)
-        .into(this, object : Callback {
+        .into(this, object:Callback{
             override fun onSuccess() {
                 progressBar.visibility = View.GONE
             }
 
             override fun onError(e: Exception?) { }
+
         })
 }
 
-fun ImageView.loadImage(width: Int, height: Int, url: String?) {
-    Picasso.get()
-        .load(url)
-        .resize(width,height)
-        .centerCrop()
-        .error(R.drawable.ic_baseline_error_24)
-        .into(this, object : Callback {
-            override fun onSuccess() {  }
-
-            override fun onError(e: Exception?) { }
-        })
+@BindingAdapter("android:imageUrl", "android:progressBar")
+fun loadPhotoURL(view: ImageView, url:String?, pb:ProgressBar){
+    if(url != null){
+        view.loadImage(url,pb)
+    }
 }
 
 fun createNotificationChannel(context: Context, importance: Int, showBadge: Boolean, name: String, description: String) {
