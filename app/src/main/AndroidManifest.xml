@@ -13,7 +13,10 @@
         android:theme="@style/Theme.Kava"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.ubaya.kava.view.MainActivity"
+            android:name=".view.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

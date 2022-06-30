@@ -1,6 +1,7 @@
 package com.ubaya.kava.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import com.ubaya.kava.R
 import com.ubaya.kava.databinding.FragmentBookDetailBinding
+import com.ubaya.kava.model.Book
 import com.ubaya.kava.viewmodel.DetailBookViewModel
 import kotlinx.android.synthetic.main.fragment_book_detail.*
 

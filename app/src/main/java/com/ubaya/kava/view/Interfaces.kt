@@ -31,4 +31,10 @@ interface AddUserListener{
     fun onButtonRegisterClick(v:View)
 }
 
+interface LoginListener {
+    fun onLoginClick(v: View, user: User)
+}
 
+interface RegisterListener {
+    fun onRegisterClick(v: View)
+}

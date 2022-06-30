@@ -10,15 +10,15 @@ data class User(
     @PrimaryKey(autoGenerate = false)
     var username: String = "",
     @ColumnInfo(name="password")
-    var password: String?,
+    var password: String? = "",
     @ColumnInfo(name="name")
-    var name: String?,
+    var name: String? = "",
     @ColumnInfo(name="gender")
-    var gender: String?,
+    var gender: String? = "",
     @ColumnInfo(name="phone")
-    var phone: String?,
+    var phone: String? = "",
     @ColumnInfo(name="photo_url")
-    var photoURL: String?
+    var photoURL: String? = ""
 )
 
 @Entity
