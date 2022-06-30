@@ -36,6 +36,7 @@ class MyBooksViewModel(application: Application) : AndroidViewModel(application)
 
         launch {
             val db = buildDb(getApplication())
+
             val getTodayDate = Calendar.getInstance().time
             val formatter = SimpleDateFormat("yyyy-MM-dd")
             val today = formatter.format(getTodayDate)
@@ -44,17 +45,17 @@ class MyBooksViewModel(application: Application) : AndroidViewModel(application)
             var listBook = listOf<Book>()
             for (raw in data) {
                 listBook += Book(
-                    id = raw.bookId,
-                    title = raw.bookTitle,
+                    id = if (raw.bookId != null) raw.bookId!! else 0,
+                    title = if (raw.bookTitle != null) raw.bookTitle!! else "",
                     subtitle = "",
                     bookNumber = "",
                     pages = 0,
                     language ="",
-                    author = raw.bookAuthor,
+                    author = if (raw.bookAuthor != null) raw.bookAuthor!! else "",
                     publisher= "",
                     description = "",
-                    rating = raw.bookRating,
-                    coverUrl = raw.bookCoverUrl,
+                    rating = if (raw.bookRating != null) raw.bookRating!! else 0.0,
+                    coverUrl = if (raw.bookCoverUrl != null) raw.bookCoverUrl!! else "",
                     bookmarked = 0)
             }
 

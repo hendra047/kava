@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_bookmark.*
  */
 class BookmarkFragment : Fragment() {
     private lateinit var viewModel: BookmarkViewModel
-    private val bookmarkListAdapter = BookmarkListAdapter(arrayListOf(), "Bookmark")
+    private val bookListAdapter = BookListAdapter(arrayListOf(), "Bookmark")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,11 +31,10 @@ class BookmarkFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(BookmarkViewModel::class.java)
-        val username= GlobalData.username
-        viewModel.refresh(username)
+        viewModel.refresh()
 
         recViewBookmark.layoutManager = LinearLayoutManager(context)
-        recViewBookmark.adapter = bookmarkListAdapter
+        recViewBookmark.adapter = bookListAdapter
 
         observeViewModel()
 
@@ -43,14 +42,14 @@ class BookmarkFragment : Fragment() {
             recViewBookmark.visibility = View.GONE
             textErrorBookmark.visibility = View.GONE
             progressLoadBookmark.visibility = View.VISIBLE
-            viewModel.refresh(username)
+            viewModel.refresh()
             refreshLayoutBookmark.isRefreshing = false
         }
     }
 
     private fun observeViewModel() {
         viewModel.booksLiveData.observe(viewLifecycleOwner) {
-            bookmarkListAdapter.updateBookList(it)
+            bookListAdapter.updateBookList(it)
         }
         viewModel.booksLoadErrorLiveData.observe(viewLifecycleOwner) {
             textErrorBookmark.visibility = if (it) View.INVISIBLE else View.GONE

@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class BookmarkViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
-    val booksLiveData = MutableLiveData<List<Bookmark>>()
+    val booksLiveData = MutableLiveData<List<Book>>()
     val booksLoadErrorLiveData = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
     private var job = Job()
@@ -30,12 +30,33 @@ class BookmarkViewModel(application: Application) : AndroidViewModel(application
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    fun refresh(username:String) {
+    fun refresh() {
         loadingLiveData.value = true
         booksLoadErrorLiveData.value = false
+
         launch {
             val db = buildDb(getApplication())
-            booksLiveData.value = db.bookmarkDao().selectBookmark(username)
+
+            val data = db.bookmarkDao().selectBookmark(GlobalData.username)
+            var listBook = listOf<Book>()
+            for (raw in data) {
+                listBook += Book(
+                    id = if (raw.bookId != null) raw.bookId!! else 0,
+                    title = if (raw.bookTitle != null) raw.bookTitle!! else "",
+                    subtitle = "",
+                    bookNumber = "",
+                    pages = 0,
+                    language ="",
+                    author = if (raw.bookAuthor != null) raw.bookAuthor!! else "",
+                    publisher= "",
+                    description = "",
+                    rating = if (raw.bookRating != null) raw.bookRating!! else 0.0,
+                    coverUrl = if (raw.bookCoverUrl != null) raw.bookCoverUrl!! else "",
+                    bookmarked = 0)
+            }
+
+            booksLiveData.value = listBook
+            loadingLiveData.value = false
         }
     }
 }
