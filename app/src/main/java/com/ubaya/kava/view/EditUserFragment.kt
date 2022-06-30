@@ -39,7 +39,7 @@ class EditUserFragment : Fragment(), UserSaveChangesListener,UserGenderClick {
         observeViewModel()
     }
 
-    override fun inRadioGenderClick(view: View, gender: String, obj: User) {
+    override fun onRadioGenderClick(view: View, gender: String, obj: User) {
         obj.gender = gender
     }
 

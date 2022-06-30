@@ -19,8 +19,12 @@ interface EditUserListener{
     fun onButtonEditClick(view:View)
 }
 
+interface BookmarkListener {
+    fun onBookmarkClick(view: View, bookId: Int)
+}
+
 interface UserGenderClick{
-    fun inRadioGenderClick(view: View, gender:String, obj:User)
+    fun onRadioGenderClick(view: View, gender:String, obj:User)
 }
 
 interface RegisterClick{

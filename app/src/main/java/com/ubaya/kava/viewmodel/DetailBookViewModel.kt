@@ -34,4 +34,18 @@ class DetailBookViewModel(application: Application) : AndroidViewModel(applicati
             bookLD.value =  db.bookDao().selectBook(bookID)
         }
     }
+
+    fun addBookmark(bookId: Int) {
+        launch {
+            val db = buildDb(getApplication())
+            db.bookDao().updateBookmark(bookId, 1)
+        }
+    }
+
+    fun removeBookmark(bookId: Int) {
+        launch {
+            val db = buildDb(getApplication())
+            db.bookDao().updateBookmark(bookId, 0)
+        }
+    }
 }
