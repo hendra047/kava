@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="registerListener"
-            type="com.ubaya.kava.view.RegisterClick" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -102,7 +100,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Sign Up"
-            android:onClick="@{registerListener::onButtonRegisterClick}"
             app:layout_constraintEnd_toEndOf="@+id/cardView7"
             app:layout_constraintStart_toStartOf="@+id/cardView7"
             app:layout_constraintTop_toBottomOf="@+id/cardView7"
