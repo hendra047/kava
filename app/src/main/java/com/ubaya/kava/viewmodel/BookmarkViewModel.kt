@@ -11,7 +11,6 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ubaya.kava.model.Book
-import com.ubaya.kava.model.Bookmark
 import com.ubaya.kava.model.GlobalData
 import com.ubaya.kava.util.buildDb
 import kotlinx.coroutines.CoroutineScope
@@ -36,26 +35,7 @@ class BookmarkViewModel(application: Application) : AndroidViewModel(application
 
         launch {
             val db = buildDb(getApplication())
-
-            val data = db.bookmarkDao().selectBookmark(GlobalData.username)
-            var listBook = listOf<Book>()
-            for (raw in data) {
-                listBook += Book(
-                    id = if (raw.bookId != null) raw.bookId!! else 0,
-                    title = if (raw.bookTitle != null) raw.bookTitle!! else "",
-                    subtitle = "",
-                    bookNumber = "",
-                    pages = 0,
-                    language ="",
-                    author = if (raw.bookAuthor != null) raw.bookAuthor!! else "",
-                    publisher= "",
-                    description = "",
-                    rating = if (raw.bookRating != null) raw.bookRating!! else 0.0,
-                    coverUrl = if (raw.bookCoverUrl != null) raw.bookCoverUrl!! else "",
-                    bookmarked = 0)
-            }
-
-            booksLiveData.value = listBook
+            booksLiveData.value = db.bookDao().selectAllBookmark()
             loadingLiveData.value = false
         }
     }

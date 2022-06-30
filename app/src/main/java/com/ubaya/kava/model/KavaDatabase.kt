@@ -12,12 +12,11 @@ import com.ubaya.kava.util.initDatabase
 import java.util.concurrent.Executors
 
 
-@Database(entities = [User::class, Book::class, Order::class, Bookmark::class], version = 2, exportSchema = false)
+@Database(entities = [User::class, Book::class, Order::class], version = 2, exportSchema = false)
 abstract class KavaDatabase:RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun bookDao(): BookDao
     abstract fun orderDao(): OrderDao
-    abstract fun bookmarkDao(): BookmarkDao
 
     companion object {
         @Volatile
