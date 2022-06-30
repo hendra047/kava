@@ -10,8 +10,8 @@ interface UserDao {
     @Query("SELECT * FROM user WHERE username= :username")
     suspend fun selectUser(username:String): User
 
-    @Update
-    suspend fun updateUser(user: User)
+    @Query("UPDATE user set name = :name, gender = :gender, phone = :phone, photo_url = :photoUrl where username = :username")
+    suspend fun updateUser(username:String, name:String, gender:String, phone:String, photoUrl:String)
 
     @Delete
     suspend fun deleteUser(user: User)

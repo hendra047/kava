@@ -2,6 +2,7 @@ package com.ubaya.kava.viewmodel
 
 import android.app.Application
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
@@ -29,6 +30,13 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         launch{
             val db = buildDb(getApplication())
             profileLiveData.value = db.userDao().selectUser(GlobalData.username)
+        }
+    }
+
+    fun update(username:String, name:String, gender:String, phone:String, photoUrl:String){
+        launch {
+            val db = buildDb(getApplication())
+            db.userDao().updateUser(username, name, gender, phone, photoUrl)
         }
     }
 }

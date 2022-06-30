@@ -29,13 +29,15 @@ class ProfileFragment : Fragment(), EditUserListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        dataBinding = FragmentProfileBinding.inflate(inflater, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         viewModel.fetch()
 
+        dataBinding.editListener = this
         observeViewModel()
     }
 

@@ -28,3 +28,7 @@ interface UserSaveChangesListener{
 interface EditUserListener{
     fun onButtonEditClick(view:View)
 }
+
+interface UserGenderClick{
+    fun inRadioGenderClick(view: View, gender:String, obj:User)
+}

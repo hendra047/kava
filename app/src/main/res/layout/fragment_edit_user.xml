@@ -7,6 +7,12 @@
         <variable
             name="user"
             type="com.ubaya.kava.model.User" />
+        <variable
+            name="saveListener"
+            type="com.ubaya.kava.view.UserSaveChangesListener" />
+        <variable
+            name="genderListener"
+            type="com.ubaya.kava.view.UserGenderClick" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,10 +24,11 @@
             android:id="@+id/imageEditProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="60dp"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
 
         <Button
@@ -30,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_weight="1"
-            android:text="Save"
+            android:text="Save Changes"
+            android:onClick="@{(view) -> saveListener.onSaveChanges(view,user)}"
             app:layout_constraintEnd_toEndOf="@+id/cardView6"
             app:layout_constraintStart_toStartOf="@+id/cardView6"
             app:layout_constraintTop_toBottomOf="@+id/cardView6" />
@@ -150,12 +158,16 @@
                         android:id="@+id/radioMale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="@{user.gender ==`Male`}"
+                        android:onClick="@{(view)-> genderListener.inRadioGenderClick(view,`Male`,user)}"
                         android:text="Male" />
 
                     <RadioButton
                         android:id="@+id/radioFemale"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:checked="@{user.gender ==`Female`}"
+                        android:onClick="@{(view)-> genderListener.inRadioGenderClick(view,`Female`,user)}"
                         android:text="Female" />
                 </RadioGroup>
 
