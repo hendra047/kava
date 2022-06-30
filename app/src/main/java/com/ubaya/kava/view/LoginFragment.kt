@@ -14,6 +14,7 @@ import androidx.navigation.ui.NavigationUI
 import com.ubaya.kava.R
 import com.ubaya.kava.databinding.FragmentLoginBinding
 import com.ubaya.kava.databinding.FragmentProfileBinding
+import com.ubaya.kava.model.GlobalData
 import com.ubaya.kava.model.User
 import com.ubaya.kava.viewmodel.LoginViewModel
 import com.ubaya.kava.viewmodel.ProfileViewModel
@@ -48,6 +49,7 @@ class LoginFragment : Fragment(), LoginListener, RegisterListener {
         viewModel.loginLiveData.observe(viewLifecycleOwner){
             it?.let {
                 if (it.username != "") {
+                    GlobalData.username = it.username
                     val action = LoginFragmentDirections.actionLoginToHome()
                     Navigation.findNavController(v).navigate(action)
                 } else {
