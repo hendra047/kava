@@ -10,7 +10,11 @@ interface AddBookClickListener {
 }
 
 interface EditBookClickListener {
-    fun onButtonEditClick(view: View)
+    fun onButtonEditClick(v: View)
+}
+
+interface DetailBookClickListener {
+    fun onButtonDetailClick(v: View)
 }
 
 interface BookSaveChangesListener{

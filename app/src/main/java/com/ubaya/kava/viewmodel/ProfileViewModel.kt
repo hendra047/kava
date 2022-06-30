@@ -31,6 +31,4 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
             profileLiveData.value = db.userDao().selectUser(GlobalData.username)
         }
     }
-
-
 }

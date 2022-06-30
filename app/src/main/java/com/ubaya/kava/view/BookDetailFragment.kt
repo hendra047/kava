@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.ubaya.kava.R
+import com.ubaya.kava.databinding.FragmentBookDetailBinding
 import com.ubaya.kava.viewmodel.DetailBookViewModel
 import kotlinx.android.synthetic.main.fragment_book_detail.*
 
@@ -17,13 +18,15 @@ import kotlinx.android.synthetic.main.fragment_book_detail.*
  */
 class BookDetailFragment : Fragment() {
     private lateinit var viewModel: DetailBookViewModel
+    private lateinit var dataBinding: FragmentBookDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_book_detail, container, false)
+        dataBinding = FragmentBookDetailBinding.inflate(inflater, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,20 +40,9 @@ class BookDetailFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.bookLiveData.observe(viewLifecycleOwner) {
+        viewModel.bookLD.observe(viewLifecycleOwner) {
             it?.let {
-//                imageBookmark.setImageResource(if (it.bookmarked == 1) R.drawable.ic_baseline_bookmark_24 else R.drawable.ic_outline_bookmark_border_24)
-//                imageCover.loadImage(300, 400, it.coverUrl)
-//                imageCoverBG.loadImage(400, 400, it.coverUrl)
-                textTitle.text = it.title
-                textSubtitle.text = it.subtitle
-                textRating.text = it.rating.toString()
-                textBookNo.text = it.bookNumber
-                textPages.text = it.pages.toString()
-                textAuthor.text = it.author
-                textPublisher.text = it.publisher
-                textLanguage.text = it.language
-                textDescription.text = it.description
+                dataBinding.book = it
             }
         }
     }

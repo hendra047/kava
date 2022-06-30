@@ -2,13 +2,15 @@ package com.ubaya.kava.view
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.ubaya.kava.databinding.BookListItemBinding
 import com.ubaya.kava.model.Book
 import kotlinx.android.synthetic.main.book_list_item.view.*
 
-class BookListAdapter(val bookList: ArrayList<Book>, val currentFrag: String): RecyclerView.Adapter<BookListAdapter.BookViewHolder>() {
+class BookListAdapter(val bookList: ArrayList<Book>, val currentFrag: String): RecyclerView.Adapter<BookListAdapter.BookViewHolder>(), DetailBookClickListener {
     class BookViewHolder(var view: BookListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -21,6 +23,7 @@ class BookListAdapter(val bookList: ArrayList<Book>, val currentFrag: String): R
         val book = bookList[position]
         with(holder.view) {
             this.book = book
+            detailListener = this@BookListAdapter
 //            textShowTitleBook.text = book.title
 //            textShowAuthor.text = book.author
 //            textShowRating.text = book.rating.toString()
@@ -43,7 +46,17 @@ class BookListAdapter(val bookList: ArrayList<Book>, val currentFrag: String): R
     fun updateBookList(newBookList: List<Book>) {
         bookList.clear()
         bookList.addAll(newBookList)
-        Log.d("coba", bookList.count().toString())
         notifyDataSetChanged()
+    }
+
+    override fun onButtonDetailClick(v: View) {
+        var action = HomeFragmentDirections.actionBookDetailFragment(v.tag.toString().toInt())
+        when(currentFrag) {
+            "My Books" -> action = MyBooksFragmentDirections.actionMyBooksDetailFragment(v.tag.toString().toInt())
+            "Bookmark" -> action = BookmarkFragmentDirections.actionBookmarkDetailFragment(v.tag.toString().toInt())
+            "Cart" -> action = CartFragmentDirections.actionCartDetailFragment(v.tag.toString().toInt())
+            "History" -> action = HistoryFragmentDirections.actionHistoryDetailFragment(v.tag.toString().toInt())
+        }
+        Navigation.findNavController(v).navigate(action)
     }
 }

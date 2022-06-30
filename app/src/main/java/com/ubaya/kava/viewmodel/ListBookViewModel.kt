@@ -30,7 +30,6 @@ class ListBookViewModel(application: Application) : AndroidViewModel(application
 
             booksLD.value = db.bookDao().selectAllBook()
             loadingLD.value = false
-            Log.d("coba", db.bookDao().selectAllBook().count().toString())
         }
     }
 

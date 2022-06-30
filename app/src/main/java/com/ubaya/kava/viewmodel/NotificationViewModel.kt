@@ -26,7 +26,7 @@ class NotificationViewModel(application: Application) : AndroidViewModel(applica
 
         queue = Volley.newRequestQueue(getApplication())
 
-        val url = "https://ubaya.fun/native/160419002/ulib/notifications.php?user_id=${GlobalData.userID}"
+        val url = "https://ubaya.fun/native/160419002/ulib/notifications.php?user_id=${GlobalData.username}"
         val stringRequest = StringRequest(
             Request.Method.GET,
             url,

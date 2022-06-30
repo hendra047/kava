@@ -24,10 +24,12 @@ data class User(
 
 @Entity
 data class Book(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0,
     @ColumnInfo(name="title")
     var title: String = "",
     @ColumnInfo(name="subtitle")
-    var subtitle: String = "",
+    var subtitle: String? = "",
     @ColumnInfo(name="book_no")
     var bookNumber: String = "",
     @ColumnInfo(name="pages")
@@ -46,23 +48,28 @@ data class Book(
     var coverUrl: String = "",
     @ColumnInfo(name="bookmarked", defaultValue = "0")
     var bookmarked: Int
-){
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
-}
+)
 
 @Entity
 data class Order(
     @ColumnInfo(name="reserved_date")
-    var reserved_date: String?,
+    var reservedDate: String?,
     @ColumnInfo(name="end_date")
-    var end_date: String?,
+    var endDate: String?,
     @ColumnInfo(name="is_paid")
-    var is_paid: Int,
-    @ColumnInfo(name="user_id")
-    var user_id: Int,
+    var isPaid: Int,
+    @ColumnInfo(name="username")
+    var username: String,
     @ColumnInfo(name="book_id")
-    var book_id: Int
+    var bookId: Int,
+    @ColumnInfo(name="book_title")
+    var bookTitle: String,
+    @ColumnInfo(name="book_author")
+    var bookAuthor: String,
+    @ColumnInfo(name="book_rating")
+    var bookRating: Double,
+    @ColumnInfo(name="book_cover_url")
+    var bookCoverUrl: String
 ){
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

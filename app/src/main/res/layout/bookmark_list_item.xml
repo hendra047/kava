@@ -46,16 +46,16 @@
 
                         <ImageView
                             android:id="@+id/imageCoverBookmark"
-                            tools:srcCompat="@tools:sample/avatars"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="133dp"
+                            android:layout_height="123dp"
                             android:heightImageUrl="@{400}"
                             android:imageUrl="@{bookmark.bookCoverUrl}"
                             android:progressBar="@{progressLoadImageCoverBookmark}"
                             android:widthImageUrl="@{300}"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:srcCompat="@tools:sample/avatars" />
 
                         <ProgressBar
                             android:id="@+id/progressLoadImageCoverBookmark"

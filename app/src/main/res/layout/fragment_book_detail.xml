@@ -35,6 +35,10 @@
                     android:layout_height="350dp"
                     android:alpha="0.1"
                     android:scaleType="centerCrop"
+                    android:widthImageUrl="@{400}"
+                    android:heightImageUrl="@{400}"
+                    android:imageUrl="@{book.coverUrl}"
+                    android:progressBar="@{progressDetailImageCoverBG}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -57,6 +61,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
+                    android:widthImageUrl="@{300}"
+                    android:heightImageUrl="@{400}"
+                    android:imageUrl="@{book.coverUrl}"
+                    android:progressBar="@{progressDetailImageCover}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/imageCoverBG"
                     app:layout_constraintTop_toTopOf="@+id/imageCoverBG"
@@ -219,7 +227,7 @@
                             android:ellipsize="end"
                             android:fontFamily="@font/sarabun"
                             android:singleLine="true"
-                            android:text="@{book.pages}"
+                            android:text="@{Integer.toString(book.pages)}"
                             app:layout_constraintEnd_toEndOf="@+id/textBookNo"
                             app:layout_constraintStart_toStartOf="@+id/textBookNo"
                             app:layout_constraintTop_toBottomOf="@+id/textBookNo" />
@@ -274,13 +282,33 @@
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="24dp"
                     android:inputType="textMultiLine"
-                    android:text="TextView"
+                    android:text="@{book.description}"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/cardView5"
                     app:layout_constraintStart_toStartOf="@+id/cardView5"
                     app:layout_constraintTop_toBottomOf="@+id/cardView5"
                     app:layout_constraintVertical_bias="0.0" />
+
+                <ProgressBar
+                    android:id="@+id/progressDetailImageCoverBG"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageCoverBG"
+                    app:layout_constraintEnd_toEndOf="@id/imageCoverBG"
+                    app:layout_constraintStart_toStartOf="@+id/imageCoverBG"
+                    app:layout_constraintTop_toTopOf="@+id/imageCoverBG" />
+
+                <ProgressBar
+                    android:id="@+id/progressDetailImageCover"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@+id/progressDetailImageCoverBG"
+                    app:layout_constraintEnd_toEndOf="@+id/imageCover"
+                    app:layout_constraintStart_toStartOf="@+id/imageCover"
+                    app:layout_constraintTop_toTopOf="@+id/imageCover" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

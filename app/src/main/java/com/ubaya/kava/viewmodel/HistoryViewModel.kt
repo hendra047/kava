@@ -26,7 +26,7 @@ class HistoryViewModel(application: Application) : AndroidViewModel(application)
 
         queue = Volley.newRequestQueue(getApplication())
 
-        val url = "https://ubaya.fun/native/160419002/ulib/histories.php?user_id=${GlobalData.userID}"
+        val url = "https://ubaya.fun/native/160419002/ulib/histories.php?user_id=${GlobalData.username}"
         val stringRequest = StringRequest(
             Request.Method.GET,
             url,

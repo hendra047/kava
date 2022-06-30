@@ -38,6 +38,4 @@ class BookmarkViewModel(application: Application) : AndroidViewModel(application
             booksLiveData.value = db.bookmarkDao().selectBookmark(username)
         }
     }
-
-
 }
