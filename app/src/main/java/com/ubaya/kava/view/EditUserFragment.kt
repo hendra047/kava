@@ -1,6 +1,7 @@
 package com.ubaya.kava.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -52,7 +53,7 @@ class EditUserFragment : Fragment(), UserSaveChangesListener,UserGenderClick {
     }
 
     override fun onSaveChanges(view: View, obj: User) {
-        viewModel.update(obj.username,obj.name!!,obj.gender!!,obj.phone!!,obj.photoURL!!)
+        viewModel.update(obj.username,obj.name!!, obj.password!!,obj.gender!!,obj.phone!!,obj.photoURL!!)
         Toast.makeText(view.context,"Todo Updated", Toast.LENGTH_SHORT).show()
         Navigation.findNavController(view).popBackStack()
     }

@@ -77,7 +77,7 @@
                         android:id="@+id/inputEditTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{user.name}" />
+                        android:text="@={user.name}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -95,7 +95,7 @@
                         android:id="@+id/inputEditSubtitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{user.password}" />
+                        android:text="@={user.password}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -113,7 +113,7 @@
                         android:id="@+id/inputEditDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{user.photoURL}" />
+                        android:text="@={user.photoURL}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -131,7 +131,7 @@
                         android:id="@+id/inputEditAuthor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{user.phone}" />
+                        android:text="@={user.phone}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView

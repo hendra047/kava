@@ -33,11 +33,10 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun update(username:String, name:String, gender:String, phone:String, photoUrl:String){
+    fun update(username:String, name:String, password:String, gender:String, phone:String, photoUrl:String){
         launch {
             val db = buildDb(getApplication())
-            db.userDao().updateUser(username, name, gender, phone, photoUrl)
-            Log.d("update",db.userDao().selectUser(username).toString())
+            db.userDao().updateUser(username, name, password, gender, phone, photoUrl)
         }
     }
 }

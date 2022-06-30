@@ -13,8 +13,8 @@ interface UserDao {
     @Query("SELECT * FROM user WHERE username= :username AND password= :password")
     suspend fun selectUserLogin(username:String, password:String): User
 
-    @Query("UPDATE user set name = :name, gender = :gender, phone = :phone, photo_url = :photoUrl where username = :username")
-    suspend fun updateUser(username:String, name:String, gender:String, phone:String, photoUrl:String)
+    @Query("UPDATE user set name = :name, password = :password, gender = :gender, phone = :phone, photo_url = :photoUrl where username = :username")
+    suspend fun updateUser(username:String, name:String, password: String, gender:String, phone:String, photoUrl:String)
 
     @Delete
     suspend fun deleteUser(user: User)
