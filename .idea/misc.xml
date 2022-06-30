@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio/kava/app/src/main/res/layout/fragment_book_detail.xml" value="0.1671195652173913" />
+        <entry key="..\:/Android Studio/kava/app/src/main/res/layout/fragment_create_book.xml" value="0.25" />
+        <entry key="..\:/Android Studio/kava/app/src/main/res/layout/fragment_edit_book.xml" value="0.21" />
+        <entry key="..\:/Android Studio/kava/app/src/main/res/layout/fragment_edit_user.xml" value="0.33" />
+        <entry key="..\:/Android Studio/kava/app/src/main/res/layout/fragment_home.xml" value="0.21" />
+        <entry key="..\:/Android Studio/kava/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
+        <entry key="..\:/Android Studio/kava/app/src/main/res/layout/notifications_item.xml" value="0.1671195652173913" />
         <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Kava/app/src/main/res/layout/book_list_item.xml" value="0.33" />
         <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Kava/app/src/main/res/layout/fragment_book_detail.xml" value="0.20416666666666666" />
         <entry key="..\:/Hendra/Kuliah/semester 6/Advanced Native Mobile Programming (ANMP)/program/Kava/app/src/main/res/layout/fragment_create_book.xml" value="0.10833333333333334" />

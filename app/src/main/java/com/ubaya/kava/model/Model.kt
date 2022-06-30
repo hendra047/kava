@@ -25,25 +25,25 @@ data class User(
 @Entity
 data class Book(
     @ColumnInfo(name="title")
-    var title: String?,
+    var title: String = "",
     @ColumnInfo(name="subtitle")
-    var subtitle: String?,
+    var subtitle: String = "",
     @ColumnInfo(name="book_no")
-    var bookNumber: String?,
+    var bookNumber: String = "",
     @ColumnInfo(name="pages")
-    var pages: Int?,
+    var pages: Int = 0,
     @ColumnInfo(name="language")
-    var language: String?,
+    var language: String = "",
     @ColumnInfo(name="author")
-    var author: String?,
+    var author: String = "",
     @ColumnInfo(name="publisher")
-    var publisher: String?,
+    var publisher: String = "",
     @ColumnInfo(name="description")
-    var description: String?,
+    var description: String = "",
     @ColumnInfo(name="rating")
-    var rating: Double?,
+    var rating: Double = 0.0,
     @ColumnInfo(name="cover_url")
-    var coverUrl: String?,
+    var coverUrl: String = "",
     @ColumnInfo(name="bookmarked", defaultValue = "0")
     var bookmarked: Int
 ){

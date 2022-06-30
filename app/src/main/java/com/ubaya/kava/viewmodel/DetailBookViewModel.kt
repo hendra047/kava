@@ -39,5 +39,11 @@ class DetailBookViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
+    fun update(id:Int, title:String, subtitle:String, bookNumber:String, pages:Int, language:String, author:String, publisher:String, description:String, rating:Double, coverUrl:String){
+        launch{
+            val db = buildDb(getApplication())
+            db.bookDao().update(id,title,subtitle,bookNumber,pages,language,author,publisher, description, rating, coverUrl)
+        }
+    }
 
 }

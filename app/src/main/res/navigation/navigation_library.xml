@@ -25,9 +25,6 @@
         <action
             android:id="@+id/action_itemHome_to_notificationFragment"
             app:destination="@id/itemNotification" />
-        <action
-            android:id="@+id/actionCreateBookFragment"
-            app:destination="@id/createBookFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemMyBooks"
@@ -69,14 +66,18 @@
         android:id="@+id/itemProfile"
         android:name="com.ubaya.kava.view.ProfileFragment"
         android:label="My Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/actionEditProfile"
+            app:destination="@id/editUserFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemNotification"
         android:name="com.ubaya.kava.view.NotificationFragment"
         android:label="Notification"
         tools:layout="@layout/fragment_notification" />
     <fragment
-        android:id="@+id/createBookFragment"
-        android:name="com.ubaya.kava.view.CreateBookFragment"
-        android:label="CreateBookFragment" />
+        android:id="@+id/editUserFragment"
+        android:name="com.ubaya.kava.view.EditUserFragment"
+        android:label="EditUserFragment" />
 </navigation>

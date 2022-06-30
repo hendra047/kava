@@ -12,37 +12,25 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ubaya.kava.model.GlobalData
 import com.ubaya.kava.model.User
+import com.ubaya.kava.util.buildDb
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class ProfileViewModel(application: Application) : AndroidViewModel(application) {
+class ProfileViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
     val profileLiveData = MutableLiveData<User>()
-    val TAG = "profileTag"
-    private var queue: RequestQueue? = null
+    private val job = Job()
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
 
     fun fetch() {
-        queue = Volley.newRequestQueue(getApplication())
-
-        val url = "https://ubaya.fun/native/160419002/ulib/users.php?id=${GlobalData.userID}"
-        val stringRequest = StringRequest(
-            Request.Method.GET,
-            url,
-            {
-                val sType = object : TypeToken<ArrayList<User>>() {}.type
-                val result = Gson().fromJson<ArrayList<User>>(it, sType)
-
-                profileLiveData.value = result[0]
-                Log.d("profile_user", result.toString())
-            },
-            {
-                Log.d("error_profile_user", it.message.toString())
-            }
-        ).apply {
-            tag = TAG
+        launch{
+            val db = buildDb(getApplication())
+            profileLiveData.value = db.userDao().selectUser(GlobalData.username)
         }
-        queue?.add(stringRequest)
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        queue?.cancelAll(TAG)
-    }
+
 }
