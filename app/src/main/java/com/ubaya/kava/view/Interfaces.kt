@@ -32,3 +32,7 @@ interface EditUserListener{
 interface UserGenderClick{
     fun inRadioGenderClick(view: View, gender:String, obj:User)
 }
+
+interface RegisterClick{
+    fun onButtonRegisterClick(v:View)
+}
