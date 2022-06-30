@@ -4,20 +4,17 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.kava.R
 import com.ubaya.kava.viewmodel.ListBookViewModel
-import com.ubaya.kava.viewmodel.NotificationViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.notifications_item.view.*
 import java.util.concurrent.TimeUnit
 
 /**
@@ -27,41 +24,11 @@ import java.util.concurrent.TimeUnit
  */
 class HomeFragment : Fragment() {
     private lateinit var viewModel: ListBookViewModel
-    private lateinit var viewModelNotification: NotificationViewModel
     private val bookListAdapter = BookListAdapter(arrayListOf(), "Home")
-    private var counter =  1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-
-        Observable.timer(1, TimeUnit.SECONDS)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                viewModelNotification = ViewModelProvider(this).get(NotificationViewModel::class.java)
-                viewModelNotification.refresh()
-
-                viewModelNotification.notificationLiveData.observe(viewLifecycleOwner) {
-                    if (it != null) {
-                        for (notification in it) {
-                            notification.remainDays?.let { remainDay ->
-                                val value =
-                                    if (remainDay > 1) "$remainDay days" else "$remainDay day"
-                                notification.title?.let { title ->
-                                    MainActivity.showNotification(
-                                        counter,
-                                        "Renew your subscription book \"$title\"",
-                                        "Remaining days: $value",
-                                        R.drawable.ic_baseline_library_books_24
-                                    )
-                                    counter++
-                                }
-                            }
-                        }
-                    }
-                }
-            }
     }
 
     override fun onCreateView(

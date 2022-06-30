@@ -73,16 +73,3 @@ fun loadPhotoURL(view: ImageView, width: Int, height: Int, url:String?, pb:Progr
         view.loadImage(width, height, url,pb)
     }
 }
-
-fun createNotificationChannel(context: Context, importance: Int, showBadge: Boolean, name: String, description: String) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val channelID = "${context.packageName}-$name"
-        val channel = NotificationChannel(channelID, name, importance).apply {
-            this.description = description
-            setShowBadge(showBadge)
-        }
-
-        val notificationManager = context.getSystemService(NotificationManager::class.java)
-        notificationManager.createNotificationChannel(channel)
-    }
-}
