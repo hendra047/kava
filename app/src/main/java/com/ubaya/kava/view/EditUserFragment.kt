@@ -36,6 +36,8 @@ class EditUserFragment : Fragment(), UserSaveChangesListener,UserGenderClick {
         super.onViewCreated(view, savedInstanceState)
         viewModel= ViewModelProvider(this).get(ProfileViewModel::class.java)
         viewModel.fetch()
+        dataBinding.saveListener = this
+        dataBinding.genderListener = this
         observeViewModel()
     }
 
