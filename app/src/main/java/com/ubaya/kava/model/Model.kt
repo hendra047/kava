@@ -7,6 +7,8 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class User(
+    @PrimaryKey(autoGenerate = false)
+    var username: String = "",
     @ColumnInfo(name="password")
     var password: String?,
     @ColumnInfo(name="name")
@@ -17,10 +19,7 @@ data class User(
     var phone: String?,
     @ColumnInfo(name="photo_url")
     var photoURL: String?
-){
-    @PrimaryKey(autoGenerate = false)
-    var username: String = ""
-}
+)
 
 @Entity
 data class Book(

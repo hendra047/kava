@@ -70,12 +70,10 @@
         <action
             android:id="@+id/actionEditProfile"
             app:destination="@id/editUserFragment" />
+        <action
+            android:id="@+id/actionRegister"
+            app:destination="@id/registerFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/itemNotification"
-        android:name="com.ubaya.kava.view.NotificationFragment"
-        android:label="Notification"
-        tools:layout="@layout/fragment_notification" />
     <fragment
         android:id="@+id/editUserFragment"
         android:name="com.ubaya.kava.view.EditUserFragment"

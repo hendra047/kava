@@ -40,10 +40,5 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun addUser(list:List<User>){
-        launch {
-            val db = buildDb(getApplication())
-            db.userDao().insertAllUser(*list.toTypedArray())
-        }
-    }
+
 }
