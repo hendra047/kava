@@ -7,6 +7,9 @@
         <variable
             name="book"
             type="com.ubaya.kava.model.Book" />
+        <variable
+            name="bookmarkListener"
+            type="com.ubaya.kava.view.BookmarkListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,7 +53,9 @@
                     android:layout_height="25dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="32dp"
-                    android:src="@drawable/ic_outline_bookmark_border_24"
+                    android:src="@{book.bookmarked == 1 ? @drawable/ic_baseline_bookmark_24 : @drawable/ic_outline_bookmark_border_24}"
+                    android:tag="0"
+                    android:onClick="@{(view) -> bookmarkListener.onBookmarkClick(view, book.id)}"
                     app:layout_constraintEnd_toEndOf="@+id/imageCoverBG"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/imageCover"

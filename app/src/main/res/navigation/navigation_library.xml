@@ -80,4 +80,12 @@
         android:id="@+id/editUserFragment"
         android:name="com.ubaya.kava.view.EditUserFragment"
         android:label="EditUserFragment" />
+    <fragment
+        android:id="@+id/itemLogin"
+        android:name="com.ubaya.kava.view.LoginFragment"
+        android:label="LoginFragment" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.ubaya.kava.view.RegisterFragment"
+        android:label="RegisterFragment" />
 </navigation>

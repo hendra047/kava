@@ -36,10 +36,12 @@ class EditUserFragment : Fragment(), UserSaveChangesListener,UserGenderClick {
         super.onViewCreated(view, savedInstanceState)
         viewModel= ViewModelProvider(this).get(ProfileViewModel::class.java)
         viewModel.fetch()
+        dataBinding.saveListener = this
+        dataBinding.genderListener = this
         observeViewModel()
     }
 
-    override fun inRadioGenderClick(view: View, gender: String, obj: User) {
+    override fun onRadioGenderClick(view: View, gender: String, obj: User) {
         obj.gender = gender
     }
 

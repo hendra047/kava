@@ -37,6 +37,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         launch {
             val db = buildDb(getApplication())
             db.userDao().updateUser(username, name, gender, phone, photoUrl)
+            Log.d("update",db.userDao().selectUser(username).toString())
         }
     }
 }
