@@ -39,4 +39,11 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
             db.userDao().updateUser(username, name, password, gender, phone, photoUrl)
         }
     }
+
+    fun addUser(list:List<User>){
+        launch {
+            val db = buildDb(getApplication())
+            db.userDao().insertAllUser(*list.toTypedArray())
+        }
+    }
 }

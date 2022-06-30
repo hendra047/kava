@@ -7,6 +7,12 @@
         <variable
             name="user"
             type="com.ubaya.kava.model.User" />
+        <variable
+            name="genderListener"
+            type="com.ubaya.kava.view.UserGenderClick" />
+        <variable
+            name="registerListener"
+            type="com.ubaya.kava.view.AddUserListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,12 +36,12 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView7"
             android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginEnd="60dp"
+            android:layout_height="500dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="30dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -44,17 +50,113 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="85dp"
+                    android:layout_height="19dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Gender :"
+                    app:layout_constraintStart_toStartOf="@+id/TextInputPhoto"
+                    app:layout_constraintTop_toBottomOf="@+id/TextInputPhoto" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView14">
+
+                    <RadioButton
+                        android:id="@+id/radioRegisterMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{user.gender ==`Male`}"
+                        android:onClick="@{(view)-> genderListener.inRadioGenderClick(view,`Male`,user)}"
+                        android:text="Male" />
+
+                    <RadioButton
+                        android:id="@+id/radioRegisterFemale"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="@{user.gender ==`Female`}"
+                        android:onClick="@{(view)-> genderListener.inRadioGenderClick(view,`Female`,user)}"
+                        android:text="Female" />
+                </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TextInputPhone"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="Phone Number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TextInpitRegisterName">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputRegisterPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{user.phone}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TextInputPhoto"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="Photo URL"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TextInputPhone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputRegisterPhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{user.photoURL}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TextInpitRegisterName"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="Name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputPasswordRegister">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputRegisterName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{user.name}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputPasswordRegister"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="32dp"
-                    android:layout_marginBottom="46dp"
                     android:hint="Password"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputRegisterPassword">
@@ -72,7 +174,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="32dp"
                     android:hint="Username"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -95,6 +197,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="Register"
+            android:onClick="@{registerListener::onButtonRegisterClick}"
             app:layout_constraintEnd_toEndOf="@+id/cardView7"
             app:layout_constraintStart_toStartOf="@+id/cardView7"
             app:layout_constraintTop_toBottomOf="@+id/cardView7" />

@@ -27,6 +27,7 @@ interface UserGenderClick{
     fun onRadioGenderClick(view: View, gender:String, obj:User)
 }
 
-interface RegisterClick{
+interface AddUserListener{
     fun onButtonRegisterClick(v:View)
 }
+
